@@ -1,6 +1,8 @@
 import { Sequelize } from "sequelize";
 import { config } from "../../config/config";
 
+const Table = require("./table");
+
 export const sequelize = new Sequelize(
   config.development.database,
   config.development.username,
@@ -10,3 +12,5 @@ export const sequelize = new Sequelize(
     dialect: "mysql",
   }
 );
+
+Table.init(sequelize);
