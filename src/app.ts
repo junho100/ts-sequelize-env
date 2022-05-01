@@ -6,10 +6,11 @@ const postRouter = require("./route/post");
 
 const app = express();
 
-app.use("/post", postRouter);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use("/posts", postRouter);
+
 app.use((req: any, res: any, next: any) => {
   const error = new Error(`404 ${req.method} ${req.url} no router`);
   next(error);

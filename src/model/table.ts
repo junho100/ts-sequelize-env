@@ -14,7 +14,7 @@ class Table extends Model {
         },
         report: {
           type: DataTypes.INTEGER,
-          default: 0,
+          defaultValue: 0,
         },
       },
       {
