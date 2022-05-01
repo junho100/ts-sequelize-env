@@ -1,40 +1,28 @@
-const Sequelize = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 
-class Table extends Sequelize.Model {
+class Table extends Model {
   static init(sequelize: any) {
     return super.init(
       {
-        id: {
-          type: Sequelize.INTEGER,
-          allowNull: false,
-        },
         author: {
-          type: Sequelize.STRING(20),
+          type: DataTypes.STRING(20),
           allowNull: false,
         },
         content: {
-          type: Sequelize.TEXT,
+          type: DataTypes.TEXT,
           allowNull: false,
         },
         report: {
-          type: Sequelize.INTEGER,
-        },
-        createdAt: {
-          type: Sequelize.DATE,
-          allowNull: false,
-        },
-        deletedAt: {
-          type: Sequelize.DATE,
-          allowNull: true,
+          type: DataTypes.INTEGER,
         },
       },
       {
         sequelize,
-        timestamps: false,
+        timestamps: true,
         underscored: false,
         modelName: "Table",
         tableName: "Table",
-        paranoid: false,
+        paranoid: true,
         charset: "utf8",
         collate: "utf8_general_ci",
       }

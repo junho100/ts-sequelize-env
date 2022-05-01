@@ -1,9 +1,9 @@
-import { Sequelize } from "sequelize";
-import { config } from "../../config/config";
+const Sequelize = require("sequelize");
+const config = require("../../config/config");
 
-const Table = require("./table");
+const TableModel = require("./table");
 
-export const sequelize = new Sequelize(
+const sq = new Sequelize(
   config.development.database,
   config.development.username,
   config.development.password,
@@ -13,4 +13,6 @@ export const sequelize = new Sequelize(
   }
 );
 
-Table.init(sequelize);
+TableModel.init(sq);
+
+module.exports = sq;

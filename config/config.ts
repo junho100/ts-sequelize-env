@@ -1,8 +1,5 @@
-import * as dotenv from "dotenv";
-
-dotenv.config();
-
-export const config = {
+require("dotenv").config();
+module.exports = {
   development: {
     username: "root",
     password: process.env.PASSWORD,
