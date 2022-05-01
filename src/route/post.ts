@@ -1,23 +1,49 @@
 const { Router } = require("express");
-
+const Tables = require("../model/table");
 const router = Router();
 
+router.get("/", async (req: any, res: any) => {
+  await Tables.create({
+    author: "a",
+    content: "b",
+  });
+  await Tables.create({
+    author: "c",
+    content: "d",
+  });
+
+  const posts = await Tables.findAll();
+  res.status(200).send(posts);
+});
+
 router.patch("/:id", async (req: any, res: any) => {
+  await Tables.create({
+    author: "a",
+    content: "b",
+  });
+  await Tables.create({
+    author: "c",
+    content: "d",
+  });
+  await Tables.create({
+    author: "e",
+    content: "f",
+  });
   const postId = parseInt(req.params.id);
-  const post = await Table.findOne({
+  const post = await Tables.findOne({
     where: {
       id: postId,
     },
   });
   if (post.report === 4) {
-    await Table.destroy({
+    await Tables.destroy({
       where: {
         id: postId,
       },
     });
     return res.sendStatus(204);
   }
-  await Table.update(
+  await Tables.update(
     {
       report: post.report + 1,
     },

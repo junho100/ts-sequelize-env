@@ -1,12 +1,15 @@
 const express = require("express");
 
+const cors = require("cors");
 const sequelize = require("./model/index");
 const postRouter = require("./route/post");
 
 const app = express();
 
 app.use("/post", postRouter);
-
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use((req: any, res: any, next: any) => {
   const error = new Error(`404 ${req.method} ${req.url} no router`);
   next(error);
